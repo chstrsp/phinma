@@ -1,30 +1,31 @@
 import questionList
-#update
+
 main_menu = {
     1: 'Start',
     2: 'Exit'
 }
 score = 0
+lives = 5
 def print_menu():
     for key in main_menu.keys():
         print(key, '--', main_menu[key])
 
 def start():
     global score
-    print()
-    game_start = input('press g to begin')
-    if game_start == "g":
+    global lives
+    game_start = input('press g to begin ')
+    if game_start.lower() == "g":
+        print("\nLives: ", lives)
+        print("Score: ", score)
         sentence = questionList.get_random_question()
         print(sentence.get_question())
-        print()
-        user_input = input("Type the word above : ")
-        print()
-        if user_input == sentence.get_answer():
+        print(sentence.get_clue())
+        user_input = input("Enter your answer: ")
+
+        if user_input.lower() == sentence.get_answer().lower():
             score += 1
-            print("Score :", score)
         else:
             score -= 1
-            print("Score :", score)
 
 
 if __name__ == '__main__':
