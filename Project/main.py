@@ -1,20 +1,17 @@
 import questionList
+def main_menu():
+    print("[1] Start ")
+    print("[2] Exit ")
 
-main_menu = {
-    1: 'Start',
-    2: 'Exit'
-}
-score = 0
-lives = 5
-def print_menu():
-    for key in main_menu.keys():
-        print(key, '--', main_menu[key])
+main_menu()
+option = int(input('Enter your option: '))
 
 def start():
-    global score
-    global lives
-    game_start = input('press g to begin ')
-    if game_start.lower() == "g":
+    game_start = input('Press G to begin ')
+    lives = 5
+    score = 0
+    while game_start.lower() == "g":
+
         print("\nLives: ", lives)
         print("Score: ", score)
         sentence = questionList.get_random_question()
@@ -23,22 +20,24 @@ def start():
         user_input = input("Enter your answer: ")
 
         if user_input.lower() == sentence.get_answer().lower():
+            print("Correct! You collected a piece of trash from the water.")
             score += 1
         else:
-            score -= 1
+            print("Incorrect! You lost a life")
+            lives -= 1
 
+        if lives == 0:
+            print("GAME OVER")
+            break
 
-if __name__ == '__main__':
-    while True:
-        print_menu()
-        option = ''
-        try:
-            option = int(input('Enter your choice: '))
-        except:
-            print('Wrong input. Please enter a number ...')
-        if option == 1:
-            start()
-        elif option == 2:
-            exit()
-        else:
-            print('Invalid user input')
+while option != 0:
+
+    if option == 1:
+        start()
+        pass
+    elif option == 2:
+        break
+    else:
+        print("Invalid option")
+        main_menu()
+        option = int(input('Enter your option: '))
