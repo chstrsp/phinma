@@ -1,10 +1,10 @@
 import questionList
+
+
 def main_menu():
     print("[1] Start ")
     print("[2] Exit ")
 
-main_menu()
-option = int(input('Enter your option: '))
 
 def start():
     game_start = input('Press G to begin ')
@@ -28,16 +28,32 @@ def start():
 
         if lives == 0:
             print("GAME OVER")
-            break
+            print('Your score is ', score, "\n")
+            print('Press 1 to continue')
+            print('Press 2 to exit ')
+            game_over = int(input('Enter your choice: '))
+            if game_over == 1:
+                start()
+            elif game_over == 2:
+                break
 
-while option != 0:
 
-    if option == 1:
-        start()
-        pass
-    elif option == 2:
-        break
-    else:
-        print("Invalid option")
-        main_menu()
-        option = int(input('Enter your option: '))
+
+print("###################")
+print("#### AQUALORE #####")
+print("###################")
+main_menu()
+option = int(input('Enter your option: '))
+if option == 1:
+    start()
+elif option == 2:
+    pass
+else:
+    print("Invalid option")
+    main_menu()
+    option = int(input('Enter your option: '))
+
+
+
+
+
